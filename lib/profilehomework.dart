@@ -65,7 +65,7 @@ class _profilehomeworkState extends State<profilehomework> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Рофиль', style: TextStyle(color: Colors.white)),
+        title: Text('Профиль', style: TextStyle(color: Colors.white)),
         backgroundColor: const Color.fromARGB(255, 71, 172, 255),
         elevation: 10,
       ),
