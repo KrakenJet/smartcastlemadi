@@ -42,7 +42,7 @@ class _ReceptScreenState extends State<ReceptScreen> {
             style: TextStyle(color: Colors.white),
           ),
           centerTitle: true,
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.blue,
         ),
         body: ListView.builder(
             itemCount: recipes.length,
@@ -63,7 +63,7 @@ class _ReceptScreenState extends State<ReceptScreen> {
                 child: Column(
                   children: [
                     Image.network(recipes[index].image!),
-                    Text(recipes[index].name!, style: TextStyle(fontSize: 20))
+                    Text(recipes[index].name!, style: TextStyle(fontSize: 25))
                   ],
                 ),
               );
