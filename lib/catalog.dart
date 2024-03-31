@@ -43,7 +43,7 @@ class _catalogState extends State<catalog> {
         userLoading = false;
       });
     } else {
-      throw 'страница не отвечает';
+      throw 'страница ничего не говорит ваще';
     }
   }
 
