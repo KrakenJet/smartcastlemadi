@@ -8,21 +8,34 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-class Login extends StatefulWidget {
-  Login({super.key});
+class LoginFireBase extends StatefulWidget {
+  LoginFireBase({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<LoginFireBase> createState() => _LoginFireBaseState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginFireBaseState extends State<LoginFireBase> {
+  String errorText = '';
+  bool loading = false;
+
   Future signin() async {
+    setState(() {
+      loading = true;
+    });
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: loginController.text, password: passwordController.text);
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => ProfileFireBase()));
     } on FirebaseAuthException catch (e) {
+      if (e.code == 'invalid-credential') {
+        errorText = 'Неверные данные';
+      } else if (e.code == 'invalid-email') {
+        errorText = 'Неверный формат';
+      } else {
+        errorText = 'Ошибка входа';
+      }
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         duration: Duration(seconds: 4),
         content: Text(e.code),
@@ -32,6 +45,9 @@ class _LoginState extends State<Login> {
             borderRadius: BorderRadius.all(Radius.circular(60))),
       ));
     }
+    setState(() {
+      loading = false;
+    });
   }
 
   TextEditingController loginController = TextEditingController();
@@ -117,13 +133,16 @@ class _LoginState extends State<Login> {
                         decorationColor: Colors.blue)),
               ),
               SizedBox(height: 20),
-              ElevatedButton(
-                  onPressed: () async {
-                    if (_formKey.currentState!.validate()) {
-                      signin();
-                    }
-                  },
-                  child: Text('Войти', style: TextStyle())),
+              loading == true
+                  ? Center(child: CircularProgressIndicator())
+                  : ElevatedButton(
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          FocusScope.of(context).unfocus();
+                          signin();
+                        }
+                      },
+                      child: Text('Войти', style: TextStyle())),
             ],
           ),
         ));

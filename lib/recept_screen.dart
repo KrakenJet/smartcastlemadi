@@ -42,7 +42,7 @@ class _ReceptScreenState extends State<ReceptScreen> {
             style: TextStyle(color: Colors.white),
           ),
           centerTitle: true,
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.blue,
         ),
         body: ListView.builder(
             itemCount: recipes.length,

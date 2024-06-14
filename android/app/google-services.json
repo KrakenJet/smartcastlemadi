@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "159045909808",
+    "project_id": "smcastleprojectmadmadi",
+    "storage_bucket": "smcastleprojectmadmadi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159045909808:android:939bccf1859f09c42d5cf5",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH8WLWW7LTPggVy4UbIijOIkjEow048s4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
